@@ -10,7 +10,7 @@ Description: >
 Parameters:
   ApplicationName:
     Type: String
-    Default: my-react-app-1
+    Default: my-react-app-20240820
     Description: A React App deployment using AWS CloudFront and S3 bucket
 
 Resources:

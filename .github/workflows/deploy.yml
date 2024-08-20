@@ -33,7 +33,7 @@ jobs:
           npm run build
 
           # Upload the build to your S3 deployment bucket
-          aws s3 sync dist/ s3://my-react-app-1
+          aws s3 sync dist/ s3://my-react-app-20240820
 
       - name: Get CloudFront DistributionId
         id: get_distribution_id
