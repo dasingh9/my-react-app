@@ -23,7 +23,7 @@ jobs:
         run: |
           aws cloudformation deploy \
             --template-file react-cloudformation-stack.yaml \
-            --stack-name MyReactAppStack \
+            --stack-name MyReactAppStack1 \
             --capabilities CAPABILITY_IAM
 
       - name: Deploy React App
@@ -33,13 +33,13 @@ jobs:
           npm run build
 
           # Upload the build to your S3 deployment bucket
-          aws s3 sync dist/ s3://my-react-app
+          aws s3 sync dist/ s3://my-react-app-1
 
       - name: Get CloudFront DistributionId
         id: get_distribution_id
         run: |
           # Use the AWS CLI to describe the CloudFormation stack and extract the DistributionId
-          distribution_id=$(aws cloudformation describe-stacks --stack-name MyReactAppStack --query "Stacks[0].Outputs[?OutputKey=='CloudFrontDistributionId'].OutputValue" --output text)
+          distribution_id=$(aws cloudformation describe-stacks --stack-name MyReactAppStack1 --query "Stacks[0].Outputs[?OutputKey=='CloudFrontDistributionId'].OutputValue" --output text)
           echo "::set-output name=distribution_id::$distribution_id"
         
       - name: Invalidate CloudFront Cache
